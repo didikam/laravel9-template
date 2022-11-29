@@ -52,11 +52,9 @@
 @endsection
 
 @push('after-scripts')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js">
-    </script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js">
-    </script>
+    <link rel="stylesheet" href="{{ asset('assets/plugins/dataTables/bootstrap4.min.css') }}">
+    <script type="text/javascript" charset="utf8" src="{{ asset('assets/plugins/dataTables/dataTables.min.js') }}"></script>
+    <script type="text/javascript" charset="utf8" src="{{ asset('assets/plugins/dataTables/bootstrap4.min.js') }}"></script>
     <script>
         var tabel = null;
         $(document).ready(function() {
@@ -97,7 +95,8 @@
                                 `<a class="ml-1 btn btn-warning" href="{{ route('admin.user.index') }}/` +
                                 row.id + `/edit" title="Edit"><i class="fas fa-edit"></i></a>`;
                             btn += `
-                                 <form method="POST" name="delete-item" action="{{ route('admin.user.index') }}/` + row.id + `/destroy" class="d-inline">
+                                 <form method="POST" name="delete-item" action="{{ route('admin.user.index') }}/` + row
+                                .id + `/destroy" class="d-inline">
                                        @csrf
                                        @method('DELETE')
                                        <button type="submit" class="btn btn-danger">
